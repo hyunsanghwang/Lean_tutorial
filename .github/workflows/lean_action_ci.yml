@@ -1,0 +1,26 @@
+name: Lean Action CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+# Least privilege: the build only needs to read the repository. If you enable
+# the docgen step below, Pages deployment additionally needs
+#   pages: write
+#   id-token: write
+# Add them back then, and not before — this workflow also runs on pull
+# requests, which anyone can open once the repository is public.
+permissions:
+  contents: read # Read access to repository contents
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v5
+      - uses: leanprover/lean-action@v1
+      # Optional: publishes API docs to GitHub Pages. Requires Pages to be
+      # enabled with "GitHub Actions" as the source (see README).
+      # - uses: leanprover-community/docgen-action@v1

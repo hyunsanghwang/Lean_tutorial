@@ -1,0 +1,35 @@
+{
+  "name": "Lean tutorial",
+  "remoteUser": "vscode",
+
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+
+  // Downloads prebuilt Mathlib, then builds the tutorial. This is the slow
+  // step (~10 min), and on a free-plan org it runs once per student, the first
+  // time they create their Codespace. Codespaces *prebuilds* would move it off
+  // the critical path, but they require a Team or Enterprise Cloud org, which
+  // AIML-K is not. The free-plan equivalent is to have students create their
+  // Codespace the day before the session and let this finish then: `.lake`
+  // survives stop/resume, so on the day it comes back in seconds. See README.
+  "onCreateCommand": "lake exe cache get && lake build",
+
+  // Mathlib needs real memory: the Lean server keeps a lot of the library
+  // resident. 2-core/4gb machines will thrash.
+  "hostRequirements": {
+    "cpus": 4,
+    "memory": "8gb",
+    "storage": "32gb"
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["leanprover.lean4"],
+      "settings": {
+        // Show the README first — it tells students which file to open.
+        "workbench.startupEditor": "readme"
+      }
+    }
+  }
+}
