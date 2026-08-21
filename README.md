@@ -42,12 +42,17 @@ Works on a Chromebook or an iPad. Configuration lives in
 
 Notes for the organiser:
 
-* **Have students create their Codespace the day before the session**, wait for
-  the terminal to finish `lake exe cache get && lake build` (about ten minutes),
-  then stop it. A Codespace keeps its `.lake` directory across stop and resume,
-  so on the day it comes back in seconds. This is the single most important
-  piece of logistics — do not let twenty people run that build simultaneously
-  at 09:00.
+* **Have students create their Codespace the day before the session**, wait
+  for setup to finish, then stop it. A Codespace keeps its `.lake` directory
+  across stop and resume, so on the day it comes back in seconds. This is the
+  single most important piece of logistics — do not let twenty people run that
+  build simultaneously at 09:00.
+
+  Setup downloads prebuilt Mathlib and builds the tutorial. CI performs the
+  identical work on the same Linux and the same four cores, from a cold cache,
+  in about two and a half minutes; a Codespace also builds the container image
+  first, so tell students to expect roughly five and not to worry at ten. The
+  window stays on "Setting up your codespace" until it is genuinely ready.
 * GitHub's *prebuild* feature would automate this, but it requires a Team or
   Enterprise Cloud organisation, and this repository lives on a personal
   account, so the option does not appear under Settings → Codespaces. The

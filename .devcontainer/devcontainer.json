@@ -6,14 +6,25 @@
     "dockerfile": "Dockerfile"
   },
 
-  // Downloads prebuilt Mathlib, then builds the tutorial. This is the slow
-  // step (~10 min), and on a free-plan org it runs once per student, the first
-  // time they create their Codespace. Codespaces *prebuilds* would move it off
-  // the critical path, but they require a Team or Enterprise Cloud org, which
-  // AIML-K is not. The free-plan equivalent is to have students create their
-  // Codespace the day before the session and let this finish then: `.lake`
-  // survives stop/resume, so on the day it comes back in seconds. See README.
-  "onCreateCommand": "lake exe cache get && lake build",
+  // Downloads prebuilt Mathlib, then builds the tutorial. This is the slow step,
+  // and it runs once per student, the first time they create their Codespace.
+  // For reference, CI does the identical work (same Linux, same 4 cores, cold
+  // cache) in about 2.5 minutes; a Codespace also has to build the image first,
+  // so budget five or so.
+  //
+  // Codespaces *prebuilds* would move this off the critical path entirely, but
+  // they require a Team or Enterprise Cloud organisation and this repository
+  // lives on a personal account, so the option does not appear. The equivalent
+  // is to have students create their Codespace the day before and let this
+  // finish then: `.lake` survives stop/resume, so on the day it returns in
+  // seconds. See README.
+  "onCreateCommand": "bash .devcontainer/setup.sh",
+
+  // Hold the "Setting up your codespace" screen until setup.sh has finished.
+  // Without this, VS Code attaches while Mathlib is still downloading and the
+  // student opens Part 1 to a wall of red squiggles from a Lean server that has
+  // no Mathlib yet — which reads as "this is broken", not "this is still busy".
+  "waitFor": "onCreateCommand",
 
   // Mathlib needs real memory: the Lean server keeps a lot of the library
   // resident. 2-core/4gb machines will thrash.
