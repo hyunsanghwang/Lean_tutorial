@@ -144,6 +144,11 @@ part file in and it works — slower, and with no project set-up at all.
   no red is a file Lean has fully checked.
 * `sorry` is an admitted goal. It makes a file compile with a warning, which is
   exactly what the exercises rely on — fill them in one at a time.
+* **Opening a file takes a few seconds while Lean loads its imports**, and the
+  info view stays empty until it finishes. Parts 1 and 2 import only what they
+  use and load in about six seconds; Part 3 imports all of Mathlib's tactics so
+  that `exact?` and `apply?` can actually find things, and takes about thirty.
+  Tell students to open the next part *before* the break, not after it.
 * Stuck? `exact?` searches Mathlib for a lemma that closes the goal, `apply?`
   for one that makes progress, and `hint` just tries a batch of standard
   tactics. [Loogle](https://loogle.lean-lang.org) searches by shape.

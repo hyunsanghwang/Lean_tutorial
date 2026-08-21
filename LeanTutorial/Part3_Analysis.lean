@@ -1,3 +1,8 @@
+-- Unlike Parts 1 and 2, this file imports everything on purpose. Part 3 is
+-- where you go looking for lemmas with `exact?` and `apply?`, and those tactics
+-- only search what has been imported. The cost is roughly thirty seconds of
+-- loading when Lean first opens this file; the benefit is that the search
+-- actually finds things. Open this file early and let it load while you read.
 import Mathlib.Tactic
 
 /-!

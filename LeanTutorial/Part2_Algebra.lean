@@ -1,4 +1,13 @@
-import Mathlib.Tactic
+-- Only what this part uses; see the note at the top of Part 1 on why.
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
+import Mathlib.Tactic.NormNum.Prime
+import Mathlib.Tactic.Positivity
+import Mathlib.Tactic.FieldSimp
+import Mathlib.Tactic.Group
+import Mathlib.Algebra.Group.Even
 
 /-!
 # Part 2 — Algebra  (≈60 minutes)

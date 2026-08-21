@@ -1,4 +1,7 @@
-import Mathlib.Tactic
+import Mathlib.Data.Real.Basic
+import Mathlib.Tactic.Ring
+import Mathlib.Tactic.Linarith
+import Mathlib.Tactic.NormNum
 
 /-!
 # Part 1 — What is Lean?  (≈45 minutes)
@@ -14,7 +17,10 @@ So checking a proof is the same job as type-checking a program, which is why a
 computer can do it at all. Everything below is an illustration of that slogan.
 
 `Mathlib` is the community library of formalised mathematics — about 1.8 million
-lines of it. We import all of its tactics on line 1.
+lines of it. The imports above pull in only the parts this file needs. That is
+not fussiness: `import Mathlib.Tactic` takes about thirty seconds to load every
+time Lean starts on a file, against about six for the four lines above. Part 3
+does import everything, deliberately, and you will feel the difference.
 
 **How to work through this file:** put your cursor at the end of any line and
 read Lean's response in the info view (VS Code: the pane on the right, or
