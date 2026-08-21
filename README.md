@@ -119,6 +119,17 @@ Put your cursor at the end of this line in any Lean file:
 
 The info view should say `4`. If it does, you are ready.
 
+**Do not use Safari for a Codespace.** The info view is a webview, and in
+Safari it renders blank — Lean works, the file compiles, the goals simply never
+appear. Since the info view *is* the teaching tool, that is a dead session.
+Use Chrome or Edge, or open the Codespace in desktop VS Code. Tell students
+this in advance; on a Mac, Safari is the default they will reach for.
+
+If the info view is blank in a supported browser, check where your cursor is
+before assuming a fault: term-mode proofs such as `theorem foo : P := rfl` have
+no intermediate goals, so an empty pane there is correct. Put the cursor at the
+end of an `#eval` or `#check` line to confirm the view is alive.
+
 ### Last-resort fallback
 
 If a laptop refuses to cooperate and Codespaces is unavailable, [Lean 4
