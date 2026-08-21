@@ -33,7 +33,7 @@ the clock runs.
 
 ### Option A — GitHub Codespaces (nothing to install)
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AIML-K/Lean_tutorial)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/hyunsanghwang/Lean_tutorial)
 
 Click the badge, or **Code → Codespaces → Create codespace on main**. You get
 VS Code in the browser with Lean, Mathlib and this repository already set up.
@@ -49,9 +49,10 @@ Notes for the organiser:
   piece of logistics — do not let twenty people run that build simultaneously
   at 09:00.
 * GitHub's *prebuild* feature would automate this, but it requires a Team or
-  Enterprise Cloud organisation; `AIML-K` is on the free plan, so the option
-  does not appear under Settings → Codespaces. The day-before trick is the
-  free-plan equivalent and works just as well for a scheduled session.
+  Enterprise Cloud organisation, and this repository lives on a personal
+  account, so the option does not appear under Settings → Codespaces. The
+  day-before trick is the equivalent and works just as well for a scheduled
+  session.
 * **Students need read access to the repo.** This repository is public, so
   anyone with the link can create a Codespace from it — nothing to arrange in
   advance. If you fork it into a private repository, remember to add the
@@ -90,7 +91,7 @@ few GB and will not finish over conference wifi.
 3. **Get this repository and its dependencies**:
 
    ```sh
-   git clone https://github.com/AIML-K/Lean_tutorial.git
+   git clone https://github.com/hyunsanghwang/Lean_tutorial.git
    cd Lean_tutorial
    lake exe cache get     # downloads prebuilt Mathlib — do not skip this
    lake build
